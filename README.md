@@ -73,6 +73,7 @@ Rat Proxy是一个由Java编写的为Minecraft服务器搭建加速ip的软件
         1. 分辨率为64x64
         2. 格式为PNG (可以在这里转换: https://convertio.co/)
         3. 体积最好别太大
+
     不放入文件将使用默认的FavIcon, 放入多个文件将随机显示
 
 ## Authors
