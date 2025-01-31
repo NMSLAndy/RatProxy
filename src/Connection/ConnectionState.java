@@ -1,4 +1,4 @@
-package Handlers;
+package Connection;
 
 public class ConnectionState {
 

@@ -5,37 +5,38 @@ import java.util.List;
 
 public class CFGPattern {
 	@SerializedName("srcPort")
-	protected int srcPort;
+	protected Integer srcPort;
 
 	@SerializedName("targetHost")
 	protected String targetHost;
 
 	@SerializedName("targetPort")
-	protected int targetPort;
+	protected Integer targetPort;
 
 	@SerializedName("rewriteHost")
-	protected boolean rewriteHost;
+	protected Boolean rewriteHost;
 
 	@SerializedName("rewrittenHost")
 	protected String rewrittenHost;
 
 	@SerializedName("rewrittenPort")
-	protected int rewrittenPort;
+	protected Integer rewrittenPort;
 
 	@SerializedName("maxPlayers")
-	protected int maxPlayers;
+	protected Integer maxPlayers;
 
 	@SerializedName("whiteListEnabled")
-	protected boolean whiteListEnabled;
+	protected Boolean whiteListEnabled;
 
-	@SerializedName("motd")
-	protected String motd;
+	@SerializedName("online")
+	protected boolean online = true;
+
+	@SerializedName("doubleLogin")
+	protected Boolean doubleLogin;
+
+	@SerializedName("motds")
+	protected List<String> motds;
 
 	@SerializedName("list")
 	protected List<String> list;
-
-	// Getter 方法
-	protected List<String> getList() {
-		return list;
-	}
 }

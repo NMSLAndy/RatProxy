@@ -1,9 +1,9 @@
-package Handlers.Agents;
+package Connection.Handlers;
 
 import java.nio.channels.SocketChannel;
 
-import Handlers.ConnectionState.States;
-import Handlers.Handler;
+import Connection.Handler;
+import Connection.ConnectionState.States;
 import Patterns.ServerStatus;
 import Utils.BufferUtils;
 import Utils.File.Log.Log;
@@ -22,7 +22,7 @@ public class S2CHandler extends Handler {
 		try {
 			long time = System.currentTimeMillis();
 			synchronized (this) {
-				while (c2s.state.is(States.NONE)) {
+				while (c2s.state.is(States.NONE) || c2s.state.is(States.HandShake)) {
 					if (System.currentTimeMillis() - time > 3000)
 						break;
 					this.wait(5);

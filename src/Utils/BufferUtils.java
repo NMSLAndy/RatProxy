@@ -1,6 +1,5 @@
 package Utils;
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -33,7 +32,7 @@ public class BufferUtils {
 		return size;
 	}
 
-	public static void write(ByteBuffer buffer, Object... items) throws IOException {
+	public static void write(ByteBuffer buffer, Object... items) {
 		for (Object item : items) {
 			if (item instanceof Boolean) {
 				buffer.put((byte) ((Boolean) item ? 1 : 0));

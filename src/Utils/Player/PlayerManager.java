@@ -1,18 +1,17 @@
 package Utils.Player;
 
-import java.util.ArrayList;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
-import Utils.Config.Config;
+import Utils.File.Log.Log;
 
 public class PlayerManager {
 
-	private static final ArrayList<UUID> whiteList = new ArrayList<UUID>();
-	private static final ArrayList<Player> players = new ArrayList<Player>();
+	private static final Set<Player> players = ConcurrentHashMap.newKeySet();
 
 	public static boolean join(String name, UUID uuid, int protocolVersion) {
-		if (Config.whiteListEnabled && !whiteList.contains(uuid))
-			return false;
+		Log.saveJoin(name);
 		Player player = new Player(name, uuid, protocolVersion);
 		if (!players.contains(player)) {
 			players.add(player);
@@ -22,9 +21,8 @@ public class PlayerManager {
 	}
 
 	public static void quit(String name, UUID uuid, int protocolVersion) {
-		Player player = new Player(name, uuid, protocolVersion);
-		if (players.contains(player))
-			players.remove(player);
+		Log.saveQuit(name);
+		players.removeIf(player -> player.getName().equals(name) || player.getUuid().equals(uuid));
 	}
 
 	public static int getPlayerCount() {

@@ -2,22 +2,29 @@ import java.net.InetSocketAddress;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Hashtable;
+
 import javax.naming.directory.Attribute;
 import javax.naming.directory.InitialDirContext;
 
-import Handlers.Connection;
+import Connection.Connection;
+import Patterns.ServerStatus;
+import Utils.Access.AccessManager;
 import Utils.Config.Config;
+import Utils.File.FavIcon.IconManager;
 import Utils.File.Log.Log;
 
 public class Main {
 
 	public static void main(String[] args) {
+		Log.init();
 		for (int i = 0; i < 4; i++)
 			System.out.println(Config.rat[i]);
 		System.out.println("            Minecraft Agent");
 		System.out.println("============================================");
-		Log.init();
 		Config.readConfig();
+		IconManager.readIcons();
+		AccessManager.init();
+
 		int srcPort = Config.srcPort;
 		String dstIP = Config.targetHost;
 		int dstPort = Config.targetPort;
@@ -49,6 +56,8 @@ public class Main {
 			Log.save("目标IP: " + dstIP);
 			Log.save("目标Port: " + dstPort);
 			checkHostRewrite(rewHost, rewPort);
+			Log.save("Motds: " + ServerStatus.motds);
+			Log.save("List: " + ServerStatus.list);
 			Config.targetHost = dstIP;
 			Config.targetPort = dstPort;
 			while (true) {

@@ -46,7 +46,7 @@ public class Log {
 		save(Colors.YELLOW + "Denied " + Colors.LIGHT_CYAN + name + Colors.GRAY + " Reason: " + Colors.WHITE + reason);
 	}
 
-	public static void save(String content) {
+	public static void save(Object content) {
 		try {
 			logQueue.put(timeStamp + " " + content + Colors.RESET);
 		} catch (InterruptedException e) {
@@ -58,17 +58,17 @@ public class Log {
 	public static void saveException(Exception e) {
 		if (e instanceof ClosedChannelException || e instanceof AsynchronousCloseException)
 			return;
-		save(Colors.RED + "[ERROR] " + e + Colors.RESET);
+		error("" + e + Colors.RESET);
 		for (StackTraceElement element : e.getStackTrace()) {
-			save(Colors.RED + "[ERROR] " + "\t" + element.toString() + Colors.RESET);
+			error("\t" + element.toString() + Colors.RESET);
 		}
 	}
 
-	public static void error(String string) {
-		save(Colors.RED + "[ERROR] " + string + Colors.RESET);
+	public static void error(Object string) {
+		save(Colors.BG_RED.toString() + Colors.WHITE + "[ERROR] " + string + Colors.RESET);
 	}
 
-	public static void warn(String string) {
+	public static void warn(Object string) {
 		save(Colors.YELLOW + "[WARN] " + string + Colors.RESET);
 	}
 

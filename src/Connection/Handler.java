@@ -1,4 +1,4 @@
-package Handlers;
+package Connection;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;

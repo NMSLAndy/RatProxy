@@ -1,11 +1,11 @@
-package Handlers;
+package Connection;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.Phaser;
 
-import Handlers.Agents.C2SHandler;
-import Handlers.Agents.S2CHandler;
+import Connection.Handlers.C2SHandler;
+import Connection.Handlers.S2CHandler;
 import Utils.File.Log.Log;
 
 public class Connection implements Runnable {
@@ -29,7 +29,9 @@ public class Connection implements Runnable {
 
 			Thread.ofVirtual().start(c2s);
 			Thread.ofVirtual().start(s2c);
-
+//			while (phaser.getUnarrivedParties() > 0) {
+//
+//			}
 			phaser.awaitAdvance(0);
 		} catch (Exception e) {
 			Log.saveException(e);

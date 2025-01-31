@@ -1,9 +1,9 @@
-package Handlers.Agents.Processors;
+package Connection.Handlers.Processors;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
-import Handlers.Handler;
+import Connection.Handler;
 
 public abstract class Processor<T> {
 	public ByteBuffer buffer;

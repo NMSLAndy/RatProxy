@@ -1,13 +1,14 @@
-package Handlers.Agents;
+package Connection.Handlers;
 
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.Phaser;
 
-import Handlers.ConnectionState;
-import Handlers.Handler;
-import Handlers.Agents.Processors.PHandShake;
-import Handlers.Agents.Processors.PPing;
-import Handlers.ConnectionState.States;
+import Connection.ConnectionState;
+import Connection.Handler;
+import Connection.ConnectionState.States;
+import Connection.Handlers.Processors.PHandShake;
+import Connection.Handlers.Processors.PPing;
+import Utils.BufferUtils;
 import Utils.HandShakeResult;
 import Utils.File.Log.Log;
 import Utils.Player.PlayerManager;
@@ -43,17 +44,17 @@ public class C2SHandler extends Handler {
 			}
 			while (sourceChannel.read(buffer) != -1) {
 				buffer.flip();
+				BufferUtils.printBuffer(buffer);
 				targetChannel.write(buffer);
 				buffer.clear();
 			}
 		} catch (Exception e) {
-			Log.saveException(e);
+			if (result != null && result.name() != null)
+				Log.warn("Player " + result.name() + " : " + e.toString());
 			buffer.clear();
 		} finally {
-			if (result != null && result.name() != null) {
-				Log.saveQuit(result.name());
+			if (result != null && result.name() != null)
 				PlayerManager.quit(result.name(), result.uuid(), result.version());
-			}
 			phaser.arrive();
 		}
 		super.run();

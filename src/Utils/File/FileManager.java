@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import Utils.File.FavIcon.IconManager;
-
 public class FileManager {
 
 	public static String curDate = null;
@@ -60,6 +58,5 @@ public class FileManager {
 		iconDir = new File(mainDir, "FavIcons");
 		if (!iconDir.exists())
 			iconDir.mkdir();
-		IconManager.readIcons();
 	}
 }

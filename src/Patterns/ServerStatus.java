@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.google.gson.Gson;
 
@@ -15,8 +17,8 @@ import Utils.Player.PlayerManager;
 public class ServerStatus {
 
 	private static final Gson gson = new Gson();
-	public static ArrayList<PlayerObj> list = new ArrayList<PlayerObj>();
-	public static Description motd = new Description("");
+	public static volatile ArrayList<PlayerObj> list = new ArrayList<PlayerObj>();
+	public static volatile ArrayList<Description> motds = new ArrayList<Description>();
 
 	public static ByteBuffer constS00(int version) throws IOException {
 		String json = getStatus(version);
@@ -29,33 +31,27 @@ public class ServerStatus {
 	}
 
 	public static String getStatus(int ver) {
-		Version version = new Version("§cR§6a§et §aP§br§9o§dx§5y§r", ver);
-//		List<Player> list = new ArrayList<>();
-//		addLine( "§7(§r");
-//		addLine( "§7(§r                       Page 1 of 1  ");
-//		addLine( "§7(§r");
-//		addLine( "§7(§r Your Skyblock profile §6Pear");
-//		addLine( "§7(§r §chas §cbeen ratted §ras a co-op");
-//		addLine( "§7(§r member was determined to");
-//		addLine( "§7(§r use melodysky.");
-//		addLine( "§7(§r");
-//		addLine( "§7(§r If you believe this to be in");
-//		addLine( "§7(§r error, you can contact our");
-//		addLine( "§7(§r support team:");
-//		addLine( "§7(§r          §9§nmelodysky.xyz");
-//		addLine( "§7(§r");
-//		addLine( "§7(§r               §2§lDISMISS");
+		Version version = new Version(Config.ratProxy, ver);
 		Players players = new Players(Config.maxPlayers, PlayerManager.getPlayerCount(), list);
-//		Description description = new Description(
-//				"Your Skyblock Profile §6Pear §chas been ratted §ras a co-op member was determined to use §cR§6a§et §aP§br§9o§dx§5y§r.");
 		String favicon = Config.getFavIcon();
-		ServerStatus serverInfo = new ServerStatus(version, players, motd, favicon);
+		ServerStatus serverInfo = new ServerStatus(version, players, getMotd(), favicon);
 		String json = gson.toJson(serverInfo);
 		return json;
 	}
 
+	public static Description getMotd() {
+		if (motds.size() == 0)
+			return new Description("Powered by " + Config.ratProxy);
+		int index = ThreadLocalRandom.current().nextInt(0, motds.size());
+		return motds.get(index);
+	}
+
 	public static void addLine(String content) {
 		list.add(new PlayerObj(content, UUID.randomUUID().toString()));
+	}
+
+	public static void addMOTD(String content) {
+		motds.add(new Description(content));
 	}
 
 	public Version version;
@@ -88,6 +84,16 @@ public class ServerStatus {
 			this.name = name;
 			this.id = id;
 		}
+
+		@Override
+		public String toString() {
+			return name;
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(name);
+		}
 	}
 
 	public static class Players {
@@ -107,6 +113,23 @@ public class ServerStatus {
 
 		public Description(String text) {
 			this.text = text;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (!(obj instanceof Description))
+				return false;
+			return text.equals(((Description) obj).text);
+		}
+
+		@Override
+		public String toString() {
+			return text;
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(text);
 		}
 	}
 }

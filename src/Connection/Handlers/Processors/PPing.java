@@ -1,6 +1,6 @@
-package Handlers.Agents.Processors;
+package Connection.Handlers.Processors;
 
-import Handlers.Handler;
+import Connection.Handler;
 
 public class PPing extends Processor<Long> {
 
