@@ -10,7 +10,8 @@ Rat Proxy是一个由Java编写的为Minecraft服务器搭建加速ip的软件
 - 比较容易上手
 - 多平台支持
 - 自定义Motd, 服务器图标等
-- dev不玩原神(jk
+- 显示服务器的真实延迟
+- 白名单管理(ign, uuid)
 
 ## How 2 use?
 
@@ -57,12 +58,30 @@ Rat Proxy是一个由Java编写的为Minecraft服务器搭建加速ip的软件
   "rewrittenHost": "mc.hypixel.net", //覆写IP
   "rewrittenPort": 25565, //覆写端口
   "maxPlayers": 10, //连接这条加速ip的最大人数
-  "whiteListEnabled": false, //是否启用白名单(还没写)
-  "motd": "server description - 服务器描述", //服务器的motd
+  "doubleLogin": false,//玩家是否需要通过第二次登录来进入服务器
+  "whiteListEnabled": false, //是否启用白名单
+  "motds": [ //服务器的motd(随机显示)
+    "第一个motd",
+    "第二个motd"
+  ], 
   "list": [  //下面的都是Player List中显示的信息
     "尼好, 这里是老鼠代理",
     "Hi, this is §cR§6a§et §aP§br§9o§dx§5y§r."
   ]
+}
+```
+
+*  Whitelist.json
+```json
+{
+  "names": [ 
+      "name1", //名字
+      "name2"
+    ],
+  "uuids": [ 
+      "00000000-0000-0000-0000-000000000000", //uuid
+      "11111111-1111-1111-1111-111111111111"
+    ]
 }
 ```
 

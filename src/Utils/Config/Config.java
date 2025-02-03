@@ -33,7 +33,6 @@ public class Config {
 	public static final String ratProxy = "§c§lR§6§la§e§lt §a§lP§b§lr§9§lo§d§lx§5§ly§r";
 	public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	public static int maxPlayers = 10;
-	public static boolean online = true;
 	public static boolean doubleLogin = false;
 	public static boolean whiteListEnabled = false;
 	public static int srcPort = 25565;
@@ -84,7 +83,6 @@ public class Config {
 			updateField(log, "maxPlayers", config.maxPlayers, v -> maxPlayers = v);
 			updateField(log, "whiteListEnabled", config.whiteListEnabled, v -> whiteListEnabled = v);
 			updateField(log, "doubleLogin", config.doubleLogin, v -> doubleLogin = v);
-			updateField(log, "online", config.online, v -> online = v);
 			updateMotd(log, config.motds);
 			updateList(log, config.list);
 			if (missingArgument) {
@@ -199,7 +197,6 @@ public class Config {
 		json.addProperty("maxPlayers", maxPlayers);
 		json.addProperty("doubleLogin", doubleLogin);
 		json.addProperty("whiteListEnabled", whiteListEnabled);
-		json.addProperty("online", online);
 
 		JsonArray motds = new JsonArray();
 		if (ServerStatus.motds.isEmpty())
