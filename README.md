@@ -12,6 +12,7 @@ Rat Proxy是一个由Java编写的为Minecraft服务器搭建加速ip的软件
 - 自定义Motd, 服务器图标等
 - 显示服务器的真实延迟
 - 白名单管理(ign, uuid)
+- 可以绕过hypixel, blocksmc等服务器的IP检查
 
 ## How 2 use?
 
