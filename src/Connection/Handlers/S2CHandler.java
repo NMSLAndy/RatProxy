@@ -1,7 +1,6 @@
 package Connection.Handlers;
 
 import java.nio.channels.SocketChannel;
-
 import Connection.Handler;
 import Connection.ConnectionState.States;
 import Patterns.ServerStatus;
@@ -67,5 +66,4 @@ public class S2CHandler extends Handler {
 		}
 		super.run();
 	}
-
 }

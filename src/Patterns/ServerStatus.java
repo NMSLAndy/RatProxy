@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 
 import Utils.BufferUtils;
 import Utils.Config.Config;
+import Utils.File.FavIcon.IconManager;
 import Utils.Player.PlayerManager;
 
 public class ServerStatus {
@@ -33,7 +34,7 @@ public class ServerStatus {
 	public static String getStatus(int ver) {
 		Version version = new Version(Config.ratProxy, ver);
 		Players players = new Players(Config.maxPlayers, PlayerManager.getPlayerCount(), list);
-		String favicon = Config.getFavIcon();
+		String favicon = getFavIcon();
 		ServerStatus serverInfo = new ServerStatus(version, players, getMotd(), favicon);
 		String json = gson.toJson(serverInfo);
 		return json;
@@ -44,6 +45,11 @@ public class ServerStatus {
 			return new Description("Powered by " + Config.ratProxy);
 		int index = ThreadLocalRandom.current().nextInt(0, motds.size());
 		return motds.get(index);
+	}
+
+	public static String getFavIcon() {
+		int index = ThreadLocalRandom.current().nextInt(0, IconManager.favIcons.size());
+		return IconManager.favIcons.get(index);
 	}
 
 	public static void addLine(String content) {

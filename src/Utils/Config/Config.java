@@ -14,7 +14,6 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Consumer;
 
 import com.google.gson.Gson;
@@ -25,7 +24,6 @@ import com.google.gson.JsonPrimitive;
 
 import Patterns.ServerStatus;
 import Utils.File.FileManager;
-import Utils.File.FavIcon.IconManager;
 import Utils.File.Log.Log;
 
 public class Config {
@@ -49,11 +47,6 @@ public class Config {
 	private static final Path CONFIG_PATH = new File(FileManager.mainDir, "Config.json").toPath();
 	private static final Path CONFIG_DIR = FileManager.mainDir.toPath();
 	private static boolean missingArgument = false;
-
-	public static String getFavIcon() {
-		int index = ThreadLocalRandom.current().nextInt(0, IconManager.favIcons.size());
-		return IconManager.favIcons.get(index);
-	}
 
 	public static void readConfig() {
 		try {
