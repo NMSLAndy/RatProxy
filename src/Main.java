@@ -19,7 +19,7 @@ public class Main {
 		Log.init();
 		for (int i = 0; i < 4; i++)
 			System.out.println(Config.rat[i]);
-		System.out.println("            Minecraft Agent");
+		System.out.println("                Rat Proxy");
 		System.out.println("============================================");
 		Config.readConfig();
 		IconManager.readIcons();
