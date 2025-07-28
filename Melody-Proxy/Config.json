@@ -1,0 +1,22 @@
+{
+  "srcPort": 25565,
+  "targetHost": "mc.loyisa.cn",
+  "targetPort": 25565,
+  "rewriteHost": true,
+  "rewrittenHost": "abc.hypixel.net",
+  "rewrittenPort": 25565,
+  "maxPlayers": 10,
+  "doubleLogin": false,
+  "whiteListEnabled": false,
+  "motds": [
+    "§aPowered by Melody Proxy",
+    "§bPowered by Melody Proxy",
+    "§cPowered by Melody Proxy",
+    "§dPowered by Melody Proxy"
+  ],
+  "list": [
+    "§1M§2e§3l§4o§5d§6y§7-§8P§9r§ao§bx§cy",
+    "§kA§rExample line 1.§kA",
+    "§kA§rExample line 2.§kA"
+  ]
+}

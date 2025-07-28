@@ -1,0 +1,34 @@
+{
+  "srcPort": 25565,
+  "targetHost": "mc.loyisa.cn",
+  "targetPort": 25565,
+  "rewriteHost": true,
+  "rewrittenHost": "mc.hypixel.net",
+  "rewrittenPort": 25565,
+  "maxPlayers": 1,
+  "doubleLogin": false,
+  "whiteListEnabled": false,
+  "motds": [
+    "Your Skyblock Profile §6Pear §chas been ratted §ras a co-op member was determined to use §cR§6a§et §aP§br§9o§dx§5y§r.",
+    "Your Skyblock Profile §6Pineapple §chas been ratted §ras a co-op member was determined to use §cR§6a§et §aP§br§9o§dx§5y§r.",
+    "Your Skyblock Profile §6Raspberry §chas been ratted §ras a co-op member was determined to use §cR§6a§et §aP§br§9o§dx§5y§r.",
+    "Your Skyblock Profile §6Orange §chas been ratted §ras a co-op member was determined to use §cR§6a§et §aP§br§9o§dx§5y§r.",
+    "Your Skyblock Profile §6Tomato §chas been ratted §ras a co-op member was determined to use §cR§6a§et §aP§br§9o§dx§5y§r."
+  ],
+  "list": [
+    "§7(§r",
+    "§7(§r                       Page 1 of 1  ",
+    "§7(§r",
+    "§7(§r Your Skyblock profile §6Pear",
+    "§7(§r §chas §cbeen ratted §ras a co-op",
+    "§7(§r member was determined to",
+    "§7(§r use melodysky.",
+    "§7(§r",
+    "§7(§r If you believe this to be in",
+    "§7(§r error, you can contact our",
+    "§7(§r support team:",
+    "§7(§r          §9§nmelodysky.xyz",
+    "§7(§r",
+    "§7(§r               §2§lDISMISS"
+  ]
+}
