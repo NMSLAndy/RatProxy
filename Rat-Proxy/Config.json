@@ -1,6 +1,6 @@
 {
   "srcPort": 25565,
-  "targetHost": "mc.loyisa.cn",
+  "targetHost": "mc.hypixel.net",
   "targetPort": 25565,
   "rewriteHost": true,
   "rewrittenHost": "mc.hypixel.net",
